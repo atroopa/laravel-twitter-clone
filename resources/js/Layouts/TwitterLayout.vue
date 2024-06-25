@@ -17,6 +17,7 @@ import MenuItem from '@/Components/MenuItem.vue';
 let createTweet = ref(false);
 let tweet = ref('')
 let randImg2 = ref(`https://picsum.photos/id/${(Math.random() * 200).toFixed(0)}/100`);
+let randImg1 = ref(`https://picsum.photos/id/${(Math.random() * 200).toFixed(0)}/100`);
 
 </script>
 
@@ -200,8 +201,18 @@ let randImg2 = ref(`https://picsum.photos/id/${(Math.random() * 200).toFixed(0)}
         </button>
       </div>
 
-      <div>
-        
+      <div class="w-full flex">
+        <div class="ml-3.5 mr-2">
+          <img class="rounded-full" width="55" :src="randImg1" />
+        </div>
+        <div class="calc(100%-100px)">
+          <div class="inline-block ">
+            <div class="flex items-center border border-gray-700 rounded-full">
+              <span class="text-[#1C9CEF] p-0.5  font-extrabold px-2">عمومی</span>
+              <ChevronDown class="pr-2" fillColor="#1C9CEF" :size="25"/>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
