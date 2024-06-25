@@ -23,7 +23,32 @@ import MenuItem from '@/Components/MenuItem.vue';
           <Twitter fillColor="#FFFFFF" :size="37" />
         </div>
         <MenuItem iconString="خانه" />
+        <MenuItem iconString="کاوش" />
+        <MenuItem iconString="اعلان‌ها" />
+        <MenuItem iconString="پیام‌ها" />
+        <MenuItem iconString="پروفایل" />
+        
+        <button class="
+                    lg:w-full
+                    mt-8
+                    ml-2
+                    text-white
+                    font-extrabold
+                    text-[22px]
+                    bg-[#1C9CEF]
+                    p-3
+                    px-3
+                    rounded-full
+                    cursor-pointer
+        ">
+            <span class="lg:block hidden">بپرس</span>
+            <span class="block lg:hidden"><Feather /></span>
+
+        </button>
       </div>
+
+      
+
     </div>
   </div>
 </template>
