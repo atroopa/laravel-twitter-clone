@@ -16,5 +16,22 @@ import ArrowLeft from 'vue-material-design-icons/ArrowLeft.vue';
 </script>
 
 <template>
+    <div class="fixed w-full">
+        <div class="max-w-[1400px] flex mx-auto">
+            <div class="lg:w-3/12 w-[60px] h-[100vh] max-w-[350px] lg:px-4 lg:mx-auto ">
+                <div class="p-2 px-3 mb-4">
+                    <Twitter fillColor="#FFFFFF" :size="37" />
+                </div>
+                
+                
 
+            </div>
+        </div>
+    </div>
 </template>
+
+<style>
+body{
+    background-color: black;
+}
+</style>
