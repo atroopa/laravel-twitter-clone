@@ -58,7 +58,9 @@ const textareaInput = (e) => {
         <MenuItem iconString="پیام‌ها" />
         <MenuItem iconString="پروفایل" />
 
-        <button class="
+        <button
+                  @click="createTweet = true"
+                  class="
                     lg:w-full
                     mt-8
                     ml-2
@@ -203,7 +205,7 @@ const textareaInput = (e) => {
   </div>
   <!-- ----------tweet components ------------------- -->
   <div>
-    <div id="OverlaySection" class="fixed left-0 top-0 w-full h-screen bg-black md:bg-gray-400 md:bg-opacity-30 md:p-3">
+    <div v-if="createTweet"  id="OverlaySection" class="fixed left-0 top-0 w-full h-screen bg-black md:bg-gray-400 md:bg-opacity-30 md:p-3">
     <div class="md:max-w-2xl md:mx-auto md:mt-10 md:rounded-xl bg-black">
       <div class="
                 flex
@@ -215,7 +217,7 @@ const textareaInput = (e) => {
                 rounded-full
                 cursor-pointer
         ">
-        <div class="hover:bg-gray-800 inline-block p-2 rounded-full cursor-pointer">
+        <div @click="closeMessageBox" class="hover:bg-gray-800 inline-block p-2 rounded-full cursor-pointer">
           <Close fillColor="#FFFFFF" :size="28" class="md:block hidden" />
           <ArrowLeft fillColor="#FFFFFF" :size="28" class="md:hidden block" />
         </div>
@@ -247,6 +249,7 @@ const textareaInput = (e) => {
                     v-model="tweet"
                     ref="textarea"
                     class="
+                          text-right
                           w-full
                           bg-black
                           border-0
