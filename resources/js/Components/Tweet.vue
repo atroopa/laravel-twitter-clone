@@ -44,5 +44,25 @@ let openOptions = ref(false);
         <video class="rounded-xl" :src="props.tweet.file" controls></video>
       </div>
     </div>
+
+    <div class="flex items-center justify-between mt-4 w-4/5">
+        <div class="flex">
+            <MessageOutline fillColor="#5e5c5c" :size="18"/>
+            <span class="text-xs font-extrabold text-[#5e5c5c] ml-3">{{ tweet.comments }}</span>
+        </div>
+        <div class="flex">
+            <Sync fillColor="#5e5c5c" :size="18"/>
+            <span class="text-xs font-extrabold text-[#5e5c5c] ml-3">{{ tweet.retweets }}</span>
+        </div>
+        <div class="flex">
+            <HeartOutline fillColor="#5e5c5c" :size="18"/>
+            <span class="text-xs font-extrabold text-[#5e5c5c] ml-3">{{ tweet.likes }}</span>
+        </div>
+        <div class="flex">
+            <ChartBar fillColor="#5e5c5c" :size="18"/>
+            <span class="text-xs font-extrabold text-[#5e5c5c] ml-3">{{ tweet.analytics }}</span>
+        </div>
+    </div>
+
   </div>
 </template>
