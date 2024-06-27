@@ -15,9 +15,33 @@ import ArrowLeft from 'vue-material-design-icons/ArrowLeft.vue';
 import MenuItem from '@/Components/MenuItem.vue';
 
 let createTweet = ref(false);
-let tweet = ref('')
+let textarea = ref(null);
+let tweet = ref('');
+let file = ref('');
+let showUpload = ref('');
+let uploadType = ref('');
 let randImg2 = ref(`https://picsum.photos/id/${(Math.random() * 200).toFixed(0)}/100`);
 let randImg1 = ref(`https://picsum.photos/id/${(Math.random() * 200).toFixed(0)}/100`);
+
+
+const getFile = (e) => {
+  file.value = e.target.files[0];
+  showUpload.value = URL.createObjectURL(e.target.files[0]);
+  uploadType.value = file.value.name.split('.').pop();
+}
+
+
+const closeMessageBox = () => {
+  createTweet.value = false
+  tweet.value = ''
+  showUpload.value = ''
+  uploadType.value = ''
+}
+
+const textareaInput = (e) => {
+  textarea.value.style.height = "auto";
+  textarea.value.style.height = `${e.target.scrollHeight}px`;
+}
 
 </script>
 
@@ -212,6 +236,57 @@ let randImg1 = ref(`https://picsum.photos/id/${(Math.random() * 200).toFixed(0)}
               <ChevronDown class="pr-2" fillColor="#1C9CEF" :size="25"/>
             </div>
           </div>
+          <div>
+            <textarea
+                    :onInput = "textareaInput"
+                    rows="4" 
+                    cols="30"
+                    placeholder="سوال حقوقی خود را بپرسید"
+                    v-model="tweet"
+                    ref="textarea"
+                    class="
+                          w-full
+                          bg-black
+                          border-0
+                          mt-2
+                          focus:ring-0
+                          text-white
+                          text-[19px]
+                          font-extrabold
+                          min-h-[120px]
+                    "
+                    >
+
+            </textarea>
+          </div>
+          <div class="w-full ">
+            <video control v-if="uploadType === 'mp4'" :src="showUpload" class="rounded-xl overflow-auto"  />
+            <img v-else :src="showupload" class="rounded-xl min-w-full">
+          </div>
+          <div class="flex py-2 items-center text-[#1C9CEF] font-extrabold">
+            <Earth class="pr-2" fillColor="#1C9CEF" :size="20" /> پاسخ برای همه آزاد 
+          </div>
+            <div class="border-b border-b-gray-700"></div>
+              <div class="flex items-center justify-between py-2">
+                <div class="flex items-center ">
+
+                  <div class="hover:bg-gray-800 inline-block p-2 rounded-full cursor-pointer">
+                    <label for="fileUpload" class="cursor-pointer">
+                      <ImageOutline fillColor="#1C9CEF" :size="25" />
+                    </label>
+                    <input type="file" id="fileUpload" class="hidden" @change="getFile">
+                  </div>
+
+                  <div class="hover:bg-gray-800 inline-block p-2 rounded-full cursor-pointer">
+                    <label for="fileUpload" class="cursor-pointer">
+                      <ImageOutline fillColor="#1C9CEF" :size="25" />
+                    </label>
+                    <input type="file" id="fileUpload" class="hidden" @change="getFile">
+                  </div>
+
+                </div>
+              </div>
+            
         </div>
       </div>
 
