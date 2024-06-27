@@ -201,12 +201,14 @@ const textareaInput = (e) => {
       </div>
     </div>
   </div>
-  <div id="OverlaySection" class="fixed top-0 left-0 w-full h-screen bg-black md:bg-gray-400 md:bg-opacity-30 md:p-3">
-    <div class="md:max-w-2xl md:max-auto md:mt-10 md:rounded-xl bg-black">
+  <!-- ----------tweet components ------------------- -->
+  <div>
+    <div id="OverlaySection" class="fixed left-0 top-0 w-full h-screen bg-black md:bg-gray-400 md:bg-opacity-30 md:p-3">
+    <div class="md:max-w-2xl md:mx-auto md:mt-10 md:rounded-xl bg-black">
       <div class="
                 flex
                 items-center
-                justify-center
+                justify-between
                 md:inline-block
                 p-2
                 m-2
@@ -278,13 +280,19 @@ const textareaInput = (e) => {
                   </div>
 
                   <div class="hover:bg-gray-800 inline-block p-2 rounded-full cursor-pointer">
-                    <label for="fileUpload" class="cursor-pointer">
-                      <ImageOutline fillColor="#1C9CEF" :size="25" />
-                    </label>
-                    <input type="file" id="fileUpload" class="hidden" @change="getFile">
+                    <FileGifBox fillColor="#1C9CEF" :size="25" />
                   </div>
 
+                  <div class="hover:bg-gray-800 inline-block p-2 rounded-full cursor-pointer">
+                    <Emoticon fillColor="#1C9CEF" :size="25" />
+                  </div>
                 </div>
+                <button
+                  :disabled="!tweet"
+                  :class="tweet ? 'bg-[#1C9CEF] text-white' : 'bg-[#124D77] text-gray-400' "
+                  class="hidden md:block font-bold text-[15px] p-1.5 px-4 rounded-full cursor-pointer">
+                  بپرس
+                </button>
               </div>
             
         </div>
@@ -292,6 +300,8 @@ const textareaInput = (e) => {
 
     </div>
   </div>
+  </div>
+
 </template>
 
 <style>
