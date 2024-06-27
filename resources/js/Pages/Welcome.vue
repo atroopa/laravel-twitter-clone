@@ -13,7 +13,7 @@ import TwitterLayout from '@/Layouts/TwitterLayout.vue';
                 <Tweet :tweet="{
                     name: 'omid hajavi',
                     handle: '@omidhajavi',
-                    image: 'https://randomuser.me/api/portraites/men/40.jpg',
+                    image: 'https://randomuser.me/api/portraits/men/61.jpg',
                     tweet:'اگر شاکی در حضور قاضی به متهم حمله کند جرم آن چیست ؟ ',
                     file: '/videos/attck.mp4',
                     is_video: true,
