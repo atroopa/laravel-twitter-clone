@@ -43,7 +43,7 @@ let openOptions = ref(false);
                 </div>
             </div>
         </div>
-        <div class="pb-3">{{ tweet.tweet }}</div>
+        <div class="pb-3 text-right">{{ tweet.tweet }}</div>
         <div v-if="tweet.file">
             <div v-if="!tweet.is_video" class="rounded-xl">
                 <img :src="tweet.file" class="mt-2 object-fill rounded-xl w-full">

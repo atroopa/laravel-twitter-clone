@@ -47,7 +47,7 @@ class TweetController extends Controller
         $tweet = new Tweet;
         $tweet->name = 'jahangir vaziri';
         $tweet->handle = '@johnweeksdev';
-        $tweet->image = 'https://rahjooyan.org/wp-content/uploads/2021/01/57280.jpg';
+        $tweet->image = 'https://randomuser.me/api/portraits/men/13.jpg';
         $tweet->tweet = $request->input('tweet');
         if ($fileName){
             $tweet->file = $path . $fileName;
@@ -100,7 +100,7 @@ class TweetController extends Controller
             unlink(public_path(). $tweet->file);
         }
 
-        $tweet->dalate();
-        return redirect()->route('tweet.index');
+        $tweet->delete();
+        return redirect()->route('tweets.index');
     }
 }

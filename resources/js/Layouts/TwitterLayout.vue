@@ -43,6 +43,23 @@ const textareaInput = (e) => {
   textarea.value.style.height = `${e.target.scrollHeight}px`;
 }
 
+const addTweet = () => {
+    if (!tweet.value) return
+
+    let data = new FormData()
+
+    data.append('tweet', tweet.value)
+    data.append('file', file.value)
+
+    router.post('/tweets', data)
+
+    createTweet.value = false
+    tweet.value = ''
+    showUpload.value = ''
+    uploadType.value = ''
+}
+
+
 </script>
 
 <template>
@@ -225,6 +242,7 @@ const textareaInput = (e) => {
           <ArrowLeft fillColor="#FFFFFF" :size="28" class="md:hidden block" />
         </div>
         <button
+          @click="addTweet()"
           :disabled="!tweet"
           :class="tweet ? 'bg-[#1C9CEF] text-white' : 'bg-[#124D77] text-gray-400' "
           class="md:hidden font-extrabold text-[16px] p-1.5 px-4 rounded-full cursor-pointer">
@@ -294,6 +312,7 @@ const textareaInput = (e) => {
                   </div>
                 </div>
                 <button
+                  @click="addTweet()"
                   :disabled="!tweet"
                   :class="tweet ? 'bg-[#1C9CEF] text-white' : 'bg-[#124D77] text-gray-400' "
                   class="hidden md:block font-bold text-[15px] p-1.5 px-4 rounded-full cursor-pointer">
