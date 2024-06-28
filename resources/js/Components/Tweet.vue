@@ -29,9 +29,32 @@ let openOptions = ref(false);
         <span class="font=[300] text-[14px] text-gray-500 pl-2">{{ props.tweet.handle }}</span>
       </div>
       <div class="hover:bg-gray-800 rounded-full cursor-pointer relative">
-        <button type="button" class="block p-2" @click="openOptions = !openOptions">
-          <DotsHorizontal />
+        <button type="button" class="block p-2">
+          <DotsHorizontal @click="openOptions = !openOptions" />
         </button>
+        <div
+          v-if="openOptions" 
+          class="
+                absolute
+                mt-1
+                right-0
+                w-[300px]
+                bg-black 
+                border
+                border-gray-700
+                rounded-lg
+                shadow-lg
+        ">
+              <Link
+                as="button"
+                method="delete"
+                :href="route('tweet.destory', {id: tweet.id})"
+                class="flex items-center cursor-pointer"
+              >
+                <TrashCanOutline class="pr-3" fillColor="#DC2626" :size="18" />
+                <span class="text-red-600 font-extrabold">Delete</span>
+              </Link>
+        </div>
       </div>
     </div>
 

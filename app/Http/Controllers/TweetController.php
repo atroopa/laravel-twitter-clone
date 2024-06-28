@@ -31,7 +31,37 @@ class TweetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = null;
+        $extension = null;
+        $fileName = null;
+        $path = '';
+
+        if ($request->hasFile('file')){
+            $file = $reqest->file('file');
+            $request->validate(['file' => 'required|mimes:jpg,jpeg,png,mp4']);
+            $extension = $file->getClientOriginalExtention();
+            $fileName = time().'.'.$extension;
+            $extension === 'mp4' ? $path = '/videos/' : $path = '/pics/';
+        }
+
+        $tweet = new Tweet;
+        $tweet->name = 'jahangir vaziri';
+        $tweet->handle = '@johnweeksdev';
+        $tweet->image = 'https://rahjooyan.org/wp-content/uploads/2021/01/57280.jpg';
+        $tweet->tweet = $request->input('tweet');
+        if ($fileName){
+            $tweet->file = $path . $fileName;
+            $tweet->is_video = $extension === 'mp4' ? true : false;
+            $file->move(public_path().$path, $fileName);
+        }
+
+        $tweet->comments = rand(5, 500);
+        $tweet->retweets = rand(5, 500);
+        $tweet->likes = rand(5, 500);
+        $tweet->analytics = rand(5, 500);
+
+        $tweet->save();
+
     }
 
     /**
@@ -59,10 +89,18 @@ class TweetController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Tweet $tweet)
+    public function destroy($id)
     {
-        //
+        $tweet = Tweet::find($id);
+        
+        if(!is_null($tweet->file) && file_exists(public_path(). $tweet->file)){
+            unlink(public_path(). $tweet->file);
+        }
+
+        $tweet->dalate();
+        return redirect()->route('tweet.index');
     }
 }
