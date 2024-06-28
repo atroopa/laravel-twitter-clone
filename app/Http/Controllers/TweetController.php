@@ -37,9 +37,9 @@ class TweetController extends Controller
         $path = '';
 
         if ($request->hasFile('file')){
-            $file = $reqest->file('file');
+            $file = $request->file('file');
             $request->validate(['file' => 'required|mimes:jpg,jpeg,png,mp4']);
-            $extension = $file->getClientOriginalExtention();
+            $extension = $file->getClientOriginalExtension();
             $fileName = time().'.'.$extension;
             $extension === 'mp4' ? $path = '/videos/' : $path = '/pics/';
         }
